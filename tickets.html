@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>TICKETS - FSTVL • B25</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.typekit.net/qba8yat.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+    <link rel="icon" type="image/svg+xml" href="logos/favicon logo.svg">
+</head>
+
+  <body class="tickets-page">
+    <main class="tickets-container">
+      <section class="tickets-accordions">
+        <!-- Toggle Row -->
+        <div class="tickets-toggle-row">
+          <button class="tickets-toggle" data-target="#abono">
+            <span class="tickets-toggle-label">ABONO GENERAL</span>
+            <span class="tickets-toggle-icon" aria-hidden="true">+</span>
+          </button>
+          <button class="tickets-toggle" data-target="#dia">
+            <span class="tickets-toggle-label">TICKETS DE DÍA</span>
+            <span class="tickets-toggle-icon" aria-hidden="true">+</span>
+          </button>
+        </div>
+
+        <!-- Abono general list -->
+        <div id="abono" class="tickets-panel">
+          <form class="ticket-line">
+            <span class="ticket-name">Abono General - EARLY BIRD</span>
+            <span class="ticket-price">70€</span>
+            <button type="submit" class="ticket-buy">COMPRAR</button>
+          </form>
+          <form class="ticket-line">
+            <span class="ticket-name">Abono General - PROMO 1</span>
+            <span class="ticket-price">75€</span>
+            <button type="submit" class="ticket-buy">COMPRAR</button>
+          </form>
+          <form class="ticket-line">
+            <span class="ticket-name">Abono General - PROMO 2</span>
+            <span class="ticket-price">80€</span>
+            <button type="submit" class="ticket-buy">COMPRAR</button>
+          </form>
+          <form class="ticket-line">
+            <span class="ticket-name">Abono General - BONO CULTURAL</span>
+            <span class="ticket-price">90€</span>
+            <button type="submit" class="ticket-buy">COMPRAR</button>
+          </form>
+        </div>
+
+        <!-- Tickets de día list -->
+        <div id="dia" class="tickets-panel">
+          <form class="ticket-line">
+            <span class="ticket-name">Día 1 - 3.10.25</span>
+            <span class="ticket-price">40€</span>
+            <button type="submit" class="ticket-buy">COMPRAR</button>
+          </form>
+          <form class="ticket-line">
+            <span class="ticket-name">Día 2 - 4.10.25</span>
+            <span class="ticket-price">40€</span>
+            <button type="submit" class="ticket-buy">COMPRAR</button>
+          </form>
+          <form class="ticket-line">
+            <span class="ticket-name">Día 3 - 5.10.25</span>
+            <span class="ticket-price">40€</span>
+            <button type="submit" class="ticket-buy">COMPRAR</button>
+          </form>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
