@@ -135,3 +135,49 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
         })();
+
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        function setMenuState(isOpen){
+            hamburger.classList.toggle('active', isOpen);
+            navMenu.classList.toggle('active', isOpen);
+            document.body.classList.toggle('menu-open', isOpen);
+            // Accessibility/escape behavior
+            hamburger.setAttribute('aria-expanded', String(isOpen));
+            hamburger.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+        }
+
+        hamburger.addEventListener('click', () => {
+            const willOpen = !navMenu.classList.contains('active');
+            setMenuState(willOpen);
+        });
+
+        // Keyboard support: Enter/Space toggles; Escape closes
+        hamburger.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const willOpen = !navMenu.classList.contains('active');
+                setMenuState(willOpen);
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                setMenuState(false);
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => setMenuState(false));
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                setMenuState(false);
+            }
+        });
