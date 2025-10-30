@@ -99,6 +99,18 @@ body {
 }
 
 /* NAVIGATION STYLES */
+.hamburger.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
 .navbar {
     background-color: var(--negro);
     padding: 0;
@@ -107,6 +119,7 @@ body {
     z-index: 1000;
 }
 
+/* Make nav container positioned so dropdown anchors to it */
 .nav-container {
     display: flex;
     justify-content: space-between;
@@ -114,6 +127,7 @@ body {
     padding: 20px 30px;
     max-width: 1200px;
     margin: 0 auto;
+    position: relative; /* anchor for absolute dropdown */
 }
 
 .logo-section {

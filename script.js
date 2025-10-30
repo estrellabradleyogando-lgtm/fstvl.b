@@ -1,28 +1,67 @@
-        // Hamburger Menu Toggle
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('navMenu');
+// hamburger menu and overlay functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('nav');
+    const overlay = document.querySelector('.overlay');
+    const body = document.body;
 
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
+    // Function to open menu
+    function openMenu() {
+        hamburger.classList.add('active');
+        nav.classList.add('active');
+        overlay.classList.add('active');
+        body.classList.add('menu-open');
+    }
 
-        // Close mobile menu when clicking on a link
-        const navLinks = navMenu.querySelectorAll('a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
-        });
+    // Function to close menu
+    function closeMenu() {
+        hamburger.classList.remove('active');
+        nav.classList.remove('active');
+        overlay.classList.remove('active');
+        body.classList.remove('menu-open');
+    }
 
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
+    // Toggle menu on hamburger click
+    if(hamburger) {
+        hamburger.addEventListener('click', function() {
+            if(hamburger.classList.contains('active')) {
+                closeMenu();
+            } else {
+                openMenu();
             }
         });
+    }
+
+    // Close menu when overlay is clicked
+    if(overlay) {
+        overlay.addEventListener('click', function() {
+            closeMenu();
+        });
+    }
+
+    // Close menu when a navigation link is clicked
+    const navLinks = document.querySelectorAll('nav ul li a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            closeMenu();
+        });
+    });
+
+    // Close menu when pressing escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && hamburger.classList.contains('active')) {
+            closeMenu();
+        }
+    });
+
+    // Basic function to scroll to sections
+    function scrollToSection(id) {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+});
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
