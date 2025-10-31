@@ -926,16 +926,23 @@ body.menu-open { overflow: hidden; }
     display: grid;
     gap: 14px;
     margin: 8px 0 28px;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: max-height 300ms ease, opacity 220ms ease;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s ease;
 }
 
-.tickets-panel.open {
-    max-height: 1200px;
-    /* big enough to show all rows */
-    opacity: 1;
+.tickets-panel.active {
+    grid-template-rows: 1fr;
+}
+
+/* Wrapper for inner content */
+.tickets-panel > * {
+    overflow: hidden;
+}
+
+.tickets-toggle .tickets-toggle-icon {
+    font-family: var(--fuente-titulos);
+    font-size: 24px;
+    font-weight: 600;
 }
 
 .ticket-line {
@@ -963,7 +970,7 @@ body.menu-open { overflow: hidden; }
     background: #fff;
     color: #000;
     border: none;
-    font-family: var(--fuente-texto);
+    font-family: var(--fuente-titulos);
     font-weight: 700;
     padding: 6px 14px;
     cursor: pointer;
@@ -981,5 +988,224 @@ body.menu-open { overflow: hidden; }
 
     .ticket-price {
         justify-self: end;
+    }
+}
+
+/* LINEUP HERO */
+.lineup-hero {
+  width: 100%;
+  height: 305px;
+  position: relative;
+  overflow: hidden;
+}
+.lineup-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* inner container aligned to lineup grid (max 1200px, 24px side padding) */
+.lineup-hero-inner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 40px; /* moved up slightly */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.lineup-cta {
+  position: relative;
+  font-size: clamp(18px, 2.6vw, 24px); /* responsive size */
+  line-height: 1;
+  background-color: var(--negro);
+  color: var(--blanco);
+  font-family: var(--fuente-titulos);
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: clamp(8px, 1.2vw, 12px) clamp(16px, 2vw, 24px); /* responsive padding */
+  margin-bottom: 24px;
+}
+/* spacing below hero before lineup grid */
+#lineup.lineup-container { 
+    margin-top: 100px; 
+    margin-bottom: 80px; /* spacing before footer */
+}
+
+/* TICKETS FORM SECTION*/
+.tickets-form-section {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 24px;
+}
+
+.tickets-form-container {
+    background-color: #FDFDFB; /* light cream/off-white */
+    border: 1px solid var(--negro);
+    padding: 32px 24px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.tickets-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tickets-form-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--negro);
+    color: var(--negro);
+    font-family: var(--fuente-texto);
+    font-size: clamp(16px, 2vw, 20px);
+    font-weight: 400;
+    padding: 8px 0 6px 0;
+    outline: none;
+    transition: border-bottom 0.18s;
+    box-sizing: border-box;
+}
+
+.tickets-form-input::placeholder {
+    color: #808080;
+    opacity: 0.7; /* faded appearance */
+    font-family: var(--fuente-texto);
+    font-size: clamp(16px, 2vw, 20px);
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.tickets-form-input:focus {
+    border-bottom: 1px solid var(--negro);
+}
+
+/* PAYMENT METHODS SECTION */
+.payment-methods-section {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 24px;
+}
+
+.payment-methods-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--negro);
+    padding: 18px 22px;
+    border: none;
+}
+
+.payment-toggle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: transparent;
+    border: none;
+    color: var(--blanco);
+    font-family: var(--fuente-titulos);
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.payment-icon {
+    font-family: var(--fuente-titulos);
+    font-size: 24px;
+    font-weight: 600;
+    display: inline-block;
+    width: 24px;
+    text-align: center;
+}
+
+.payment-label {
+    font-family: var(--fuente-titulos);
+}
+
+.payment-logos {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.payment-logo-img {
+    height: 32px;
+    width: auto;
+}
+
+.payment-panel {
+    background-color: var(--blanco);
+    border: 1px solid var(--negro);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.35s ease, opacity 0.25s ease;
+}
+
+.payment-panel.active {
+    max-height: 800px;
+    opacity: 1;
+}
+
+.payment-panel > * {
+    overflow: hidden;
+}
+
+.payment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 24px 22px;
+}
+
+.payment-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--negro);
+    color: var(--negro);
+    font-family: var(--fuente-texto);
+    font-size: clamp(14px, 1.6vw, 18px);
+    font-weight: 400;
+    padding: 8px 0 6px 0;
+    outline: none;
+    transition: border-bottom 0.18s;
+    box-sizing: border-box;
+}
+
+.payment-input::placeholder {
+    color: var(--negro);
+    opacity: 0.7;
+    font-family: var(--fuente-texto);
+    font-size: clamp(14px, 1.6vw, 18px);
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.payment-input:focus {
+    border-bottom: 1px solid var(--negro);
+}
+
+.payment-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+@media (max-width: 600px) {
+    .payment-row {
+        grid-template-columns: 1fr;
     }
 }

@@ -102,82 +102,111 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         })();
 
-        // Tickets accordion toggles (slide + scroll)
-        (function initTicketsAccordion(){
-            const toggles = document.querySelectorAll('.tickets-toggle');
-            const panels = document.querySelectorAll('.tickets-panel');
-            if (!toggles.length) return;
-
-            function closeAll(){
-                panels.forEach(p => p.classList.remove('open'));
-                toggles.forEach(b => {
-                    b.classList.remove('open');
-                    const icon = b.querySelector('.tickets-toggle-icon');
-                    if (icon) icon.textContent = '+';
-                });
-            }
-
-            toggles.forEach(btn => {
-                const targetSel = btn.getAttribute('data-target');
-                const target = document.querySelector(targetSel);
-                if (!target) return;
-
-                btn.addEventListener('click', () => {
-                    const isOpen = target.classList.contains('open');
-                    closeAll();
-                    if (!isOpen) {
-                        target.classList.add('open');
-                        btn.classList.add('open');
-                        const icon = btn.querySelector('.tickets-toggle-icon');
-                        if (icon) icon.textContent = '-';
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                });
-            });
-        })();
-
-        // Hamburger Menu Toggle
+        // Hamburger Menu Toggle (guard for pages without navbar)
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('navMenu');
 
-        function setMenuState(isOpen){
-            hamburger.classList.toggle('active', isOpen);
-            navMenu.classList.toggle('active', isOpen);
-            document.body.classList.toggle('menu-open', isOpen);
-            // Accessibility/escape behavior
-            hamburger.setAttribute('aria-expanded', String(isOpen));
-            hamburger.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
-        }
+        if (hamburger && navMenu) {
+            function setMenuState(isOpen){
+                hamburger.classList.toggle('active', isOpen);
+                navMenu.classList.toggle('active', isOpen);
+                document.body.classList.toggle('menu-open', isOpen);
+                // Accessibility/escape behavior
+                hamburger.setAttribute('aria-expanded', String(isOpen));
+                hamburger.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+            }
 
-        hamburger.addEventListener('click', () => {
-            const willOpen = !navMenu.classList.contains('active');
-            setMenuState(willOpen);
-        });
-
-        // Keyboard support: Enter/Space toggles; Escape closes
-        hamburger.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
+            hamburger.addEventListener('click', () => {
                 const willOpen = !navMenu.classList.contains('active');
                 setMenuState(willOpen);
+            });
+
+            // Keyboard support: Enter/Space toggles; Escape closes
+            hamburger.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    const willOpen = !navMenu.classList.contains('active');
+                    setMenuState(willOpen);
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                    setMenuState(false);
+                }
+            });
+
+            // Close mobile menu when clicking on a link
+            const navLinks = navMenu.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => setMenuState(false));
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                    setMenuState(false);
+                }
+            });
+        }
+
+
+// TICKETS ACCORDIONS
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleButtons = document.querySelectorAll('.tickets-toggle');
+
+    toggleButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-target');
+            const targetPanel = document.querySelector(targetId);
+            const icon = this.querySelector('.tickets-toggle-icon');
+            
+            // Check if this panel is currently open
+            const isOpen = targetPanel.classList.contains('active');
+            
+            // Close all panels and reset all icons
+            document.querySelectorAll('.tickets-panel').forEach(panel => {
+                panel.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.tickets-toggle-icon').forEach(toggleIcon => {
+                toggleIcon.textContent = '+';
+            });
+            
+            // If the clicked panel was not open, open it
+            if (!isOpen) {
+                targetPanel.classList.add('active');
+                icon.textContent = '−';
             }
         });
+    });
 
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && navMenu.classList.contains('active')) {
-                setMenuState(false);
+    // PAYMENT METHODS ACCORDION
+    const paymentToggles = document.querySelectorAll('.payment-toggle');
+
+    paymentToggles.forEach(button => {
+        button.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-target');
+            const targetPanel = document.querySelector(targetId);
+            const icon = this.querySelector('.payment-icon');
+            
+            // Check if this panel is currently open
+            const isOpen = targetPanel.classList.contains('active');
+            
+            // Close all panels and reset all icons
+            document.querySelectorAll('.payment-panel').forEach(panel => {
+                panel.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.payment-icon').forEach(toggleIcon => {
+                toggleIcon.textContent = '+';
+            });
+            
+            // If the clicked panel was not open, open it
+            if (!isOpen) {
+                targetPanel.classList.add('active');
+                icon.textContent = '−';
             }
         });
-
-        // Close mobile menu when clicking on a link
-        const navLinks = navMenu.querySelectorAll('a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => setMenuState(false));
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
-                setMenuState(false);
-            }
-        });
+    });
+});

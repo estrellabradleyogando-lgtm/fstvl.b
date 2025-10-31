@@ -10,28 +10,36 @@
     <link rel="icon" type="image/svg+xml" href="logos/favicon logo.svg">
 </head>
 
-  <body></body> 
-  <!-- MENU NAVEGACION -->
-  <header class="navbar">
-      <div class="nav-container">
-          <div class="logo-section">
-              <a href="home.html" class="logo">
-                  <img src="logos/logo1.svg" alt="FSTVL•B Logo" class="logo-img" />
-              </a>
-          </div>
-          <nav class="nav-menu" id="navMenu">
-              <a href="lineup.html" class="nav-link">LINEUP</a>
-              <a href="#about" class="nav-link">ABOUT</a>
-              <a href="tickets.html" class="nav-button">TICKET$</a>
-          </nav>
-          <div class="hamburger" id="hamburger">
-              <span></span>
-              <span></span>
-              <span></span>
-              <div class="overlay"></div>
-          </div>
-      </div>
-  </header>
+  <body>
+     <!-- MENU NAVEGACION -->
+     <header class="navbar">
+        <div class="nav-container">
+            <div class="logo-section">
+                <a href="home.html" class="logo">
+                    <img src="logos/logo1.svg" alt="FSTVL•B Logo" class="logo-img" />
+                </a>
+            </div>
+            <nav class="nav-menu" id="navMenu">
+                <a href="lineup.html" class="nav-link">LINEUP</a>
+                <a href="home.html#about" class="nav-link">ABOUT</a>
+                <a href="tickets.html" class="nav-button">TICKET$</a>
+            </nav>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+                <div class="overlay"></div>
+            </div>
+        </div>
+    </header>
+
+   <!-- LINEUP HERO -->
+   <section class="lineup-hero">
+    <img src="img/FSTVLB25-5-Public-1536x1024.jpg" alt="Public" />
+    <div class="lineup-hero-inner">
+      <a href="#lineup" class="lineup-cta">TICKET$</a>
+    </div>
+  </section>
 
   <!-- TICKETS -->
   <div class="tickets-page">
@@ -49,49 +57,203 @@
           </button>
         </div>
 
-        <!-- Abono general list -->
-        <div id="abono" class="tickets-panel">
-          <form class="ticket-line">
+       <!-- Abono general list -->
+<div id="abono" class="tickets-panel">
+    <div>
+        <form class="ticket-line">
             <span class="ticket-name">Abono General - EARLY BIRD</span>
             <span class="ticket-price">70€</span>
             <button type="submit" class="ticket-buy">COMPRAR</button>
-          </form>
-          <form class="ticket-line">
+        </form>
+        <form class="ticket-line">
             <span class="ticket-name">Abono General - PROMO 1</span>
             <span class="ticket-price">75€</span>
             <button type="submit" class="ticket-buy">COMPRAR</button>
-          </form>
-          <form class="ticket-line">
+        </form>
+        <form class="ticket-line">
             <span class="ticket-name">Abono General - PROMO 2</span>
             <span class="ticket-price">80€</span>
             <button type="submit" class="ticket-buy">COMPRAR</button>
-          </form>
-          <form class="ticket-line">
+        </form>
+        <form class="ticket-line">
             <span class="ticket-name">Abono General - BONO CULTURAL</span>
             <span class="ticket-price">90€</span>
             <button type="submit" class="ticket-buy">COMPRAR</button>
-          </form>
-        </div>
+        </form>
+    </div>
+</div>
 
-        <!-- Tickets de día list -->
-        <div id="dia" class="tickets-panel">
-          <form class="ticket-line">
+<!-- Tickets de día list -->
+<div id="dia" class="tickets-panel">
+    <div>
+        <form class="ticket-line">
             <span class="ticket-name">Día 1 - 3.10.25</span>
             <span class="ticket-price">40€</span>
             <button type="submit" class="ticket-buy">COMPRAR</button>
-          </form>
-          <form class="ticket-line">
+        </form>
+        <form class="ticket-line">
             <span class="ticket-name">Día 2 - 4.10.25</span>
             <span class="ticket-price">40€</span>
             <button type="submit" class="ticket-buy">COMPRAR</button>
-          </form>
-          <form class="ticket-line">
+        </form>
+        <form class="ticket-line">
             <span class="ticket-name">Día 3 - 5.10.25</span>
             <span class="ticket-price">40€</span>
             <button type="submit" class="ticket-buy">COMPRAR</button>
-          </form>
-        </div>
+        </form>
+    </div>
+</div>
       </section>
     </main>
+  </div>
+
+  <!-- TICKETS FORM SECTION -->
+  <section class="tickets-form-section">
+    <div class="tickets-form-container">
+      <form class="tickets-form" autocomplete="off">
+        <input id="tickets-name" name="name" type="text" class="tickets-form-input" placeholder="NOMBRE" required>
+        <input id="tickets-email" name="email" type="email" class="tickets-form-input" placeholder="E-MAIL" required>
+      </form>
+    </div>
+  </section>
+
+  <!-- PAYMENT METHODS SECTION -->
+  <section class="payment-methods-section">
+    <div class="payment-methods-container">
+      <div class="payment-option" id="payment-credito">
+        <button class="payment-toggle" data-target="#payment-credito-panel">
+          <span class="payment-icon">+</span>
+          <span class="payment-label">Crédito</span>
+        </button>
+        <div class="payment-logos">
+          <img src="logos/Payment Method/Mastercard.svg" alt="Mastercard" class="payment-logo-img" />
+          <img src="logos/Payment Method/Visa.svg" alt="Visa" class="payment-logo-img" />
+          <img src="logos/Payment Method/Amex.svg" alt="American Express" class="payment-logo-img" />
+        </div>
+      </div>
+      <div id="payment-credito-panel" class="payment-panel">
+        <form class="payment-form" autocomplete="off">
+          <input type="text" class="payment-input" placeholder="Número de tarjeta" required>
+          <div class="payment-row">
+            <input type="text" class="payment-input" placeholder="Código seguridad" required>
+            <input type="text" class="payment-input" placeholder="Fecha validez (MM/YY)" required>
+          </div>
+          <input type="text" class="payment-input" placeholder="Nombre de tarjeta" required>
+        </form>
+      </div>
+
+      <div class="payment-option" id="payment-paypal">
+        <button class="payment-toggle" data-target="#payment-paypal-panel">
+          <span class="payment-icon">+</span>
+          <span class="payment-label">PayPal</span>
+        </button>
+        <div class="payment-logos">
+          <img src="logos/Payment Method/PayPal.svg" alt="PayPal" class="payment-logo-img" />
+        </div>
+      </div>
+      <div id="payment-paypal-panel" class="payment-panel">
+        <form class="payment-form" autocomplete="off">
+          <input type="email" class="payment-input" placeholder="E-mail" required>
+        </form>
+      </div>
+
+      <div class="payment-option" id="payment-google">
+        <button class="payment-toggle" data-target="#payment-google-panel">
+          <span class="payment-icon">+</span>
+          <span class="payment-label">Google Pay</span>
+        </button>
+        <div class="payment-logos">
+          <img src="logos/Payment Method/GooglePay.svg" alt="Google Pay" class="payment-logo-img" />
+        </div>
+      </div>
+      <div id="payment-google-panel" class="payment-panel">
+        <form class="payment-form" autocomplete="off">
+          <input type="email" class="payment-input" placeholder="E-mail" required>
+        </form>
+      </div>
+    </div>
+  </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <!-- Top Section -->
+            <div class="footer-top">
+                <div class="row">
+                    <div class="col-3">
+                        <h3>FSTVL•B25:</h3>
+                        <p>PARC DEL FÒRUM</p>
+                        <p>C. DE LA PAU, 12</p>
+                        <p>08930 BARCELONA</p>
+                        <p>METRO FÒRUM (L4)</p>
+                    </div>
+                    <div class="col-3">
+                        <h3>CONTACTO:</h3>
+                        <p><a href="mailto:hola@fstvlb.com">hola@fstvlb.com</a></p>
+                        <p><a href="mailto:press@fstvlb.com">press@fstvlb.com</a></p>
+                        <p><a href="https://www.lacosta.cat/" target="_blank" rel="noopener noreferrer">ZONA DE PRENSA</a></p>
+                    </div>
+                    <div class="col-3">
+                        <h3>FOLLOW:</h3>
+                        <p><a href="https://www.instagram.com/fstvl_b/" target="_blank" rel="noopener noreferrer">IG</a></p>
+                        <p><a href="https://x.com/fstvl_b/" target="_blank" rel="noopener noreferrer">TW</a></p>
+                        <p><a href="https://www.facebook.com/fstvlb/" target="_blank" rel="noopener noreferrer">FB</a></p>
+                    </div>
+                    <div class="col-3">
+                        <div class="footer-logo">
+                            <h1>FSTVL</h1>
+                            <h2>B<span class="dot">•</span></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="footer-divider"></div>
+
+            <!-- Bottom Section -->
+            <div class="footer-bottom">
+                <div class="row">
+                    <div class="col-3">
+                        <h3>NEWSLETTER:</h3>
+                        <form class="footer-newsletter" autocomplete="off">
+                            <input id="newsletter-name" name="name" type="text" class="footer-newsletter-input" placeholder="NOMBRE" required>
+                            <input id="newsletter-email" name="email" type="email" class="footer-newsletter-input" placeholder="E-MAIL" required>
+                            <button type="submit" class="footer-newsletter-btn">ENVIAR</button>
+                        </form>
+                    </div>
+                    <div class="col-3">
+                        <h3>PARTNER:</h3>
+                        <div class="partner-logos">
+                            <img src="logos/VollDamm.svg" alt="Voll-Damm" />
+                            <img src="logos/Adidas.svg" alt="Adidas" />
+                        </div>
+                        <h3 class="footer-media-title">MEDIA:</h3>
+                        <div class="media-logos">
+                            <img src="logos/radio 3.svg" alt="radio 3" />
+                            <img src="logos/Cat.svg" alt="Cat" />
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <h3>PATROCINA Y COLABORA:</h3>
+                        <div class="sponsor-logos">
+                            <img src="logos/Jagermeister.svg" alt="Jagermeister" />
+                            <img src="logos/fritz-kola.svg" alt="fritz-kola" />
+                            <img src="logos/Lorenz.svg" alt="Lorenz" />
+                            <img src="logos/JackDaniels.svg" alt="Jack Daniel's" />
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <h3>CON EL SOPORTE DE:</h3>
+                        <div class="support-logos">
+                            <img src="logos/Ajuntament de Barcelona.svg" alt="Ajuntament de Barcelona" />
+                            <img src="logos/Gobierno de España.svg" alt="Gobierno de España" />
+                            <img src="logos/Generalitat de Catalunya.svg" alt="Generalitat de Catalunya" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
   </body>
 </html>
