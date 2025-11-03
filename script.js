@@ -209,4 +209,58 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // CART FUNCTIONALITY
+    const cartSection = document.getElementById('cart-section');
+    const cartItemName = document.getElementById('cart-item-name');
+    const cartItemPrice = document.getElementById('cart-item-price');
+    const cartQuantity = document.getElementById('cart-quantity');
+    const cartTotalPrice = document.getElementById('cart-total-price');
+    const cartIncrease = document.getElementById('cart-increase');
+    const cartDecrease = document.getElementById('cart-decrease');
+    
+    if (cartSection && cartItemName && cartItemPrice && cartQuantity && cartTotalPrice && cartIncrease && cartDecrease) {
+        let currentTicketPrice = 0;
+
+        // Handle COMPRAR button clicks
+        document.querySelectorAll('.ticket-buy').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const form = this.closest('.ticket-line');
+                const ticketName = form.querySelector('.ticket-name').textContent;
+                const ticketPriceText = form.querySelector('.ticket-price').textContent;
+                const price = parseFloat(form.getAttribute('data-price'));
+                
+                // Update cart with selected ticket
+                cartItemName.textContent = ticketName;
+                cartItemPrice.textContent = ticketPriceText;
+                currentTicketPrice = price;
+                cartQuantity.value = 1;
+                updateCartTotal();
+                
+                // Show cart section and scroll to it
+                cartSection.style.display = 'block';
+                cartSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Quantity controls
+        cartIncrease.addEventListener('click', () => {
+            cartQuantity.value = parseInt(cartQuantity.value) + 1;
+            updateCartTotal();
+        });
+
+        cartDecrease.addEventListener('click', () => {
+            if (parseInt(cartQuantity.value) > 1) {
+                cartQuantity.value = parseInt(cartQuantity.value) - 1;
+                updateCartTotal();
+            }
+        });
+
+        function updateCartTotal() {
+            const quantity = parseInt(cartQuantity.value) || 1;
+            const total = currentTicketPrice * quantity;
+            cartTotalPrice.textContent = total.toFixed(0) + '€';
+        }
+    }
 });

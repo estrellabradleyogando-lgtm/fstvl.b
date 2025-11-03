@@ -60,24 +60,28 @@
        <!-- Abono general list -->
 <div id="abono" class="tickets-panel">
     <div>
-        <form class="ticket-line">
+        <form class="ticket-line" data-ticket-type="abono-early-bird" data-price="70">
             <span class="ticket-name">Abono General - EARLY BIRD</span>
             <span class="ticket-price">70€</span>
+            <input type="number" name="abono-early-bird" id="abono-early-bird" min="0" value="0" data-price="70" style="display: none;" />
             <button type="submit" class="ticket-buy">COMPRAR</button>
         </form>
-        <form class="ticket-line">
+        <form class="ticket-line" data-ticket-type="abono-promo1" data-price="75">
             <span class="ticket-name">Abono General - PROMO 1</span>
             <span class="ticket-price">75€</span>
+            <input type="number" name="abono-promo1" id="abono-promo1" min="0" value="0" data-price="75" style="display: none;" />
             <button type="submit" class="ticket-buy">COMPRAR</button>
         </form>
-        <form class="ticket-line">
+        <form class="ticket-line" data-ticket-type="abono-promo2" data-price="80">
             <span class="ticket-name">Abono General - PROMO 2</span>
             <span class="ticket-price">80€</span>
+            <input type="number" name="abono-promo2" id="abono-promo2" min="0" value="0" data-price="80" style="display: none;" />
             <button type="submit" class="ticket-buy">COMPRAR</button>
         </form>
-        <form class="ticket-line">
+        <form class="ticket-line" data-ticket-type="abono-bono-cultural" data-price="90">
             <span class="ticket-name">Abono General - BONO CULTURAL</span>
             <span class="ticket-price">90€</span>
+            <input type="number" name="abono-bono-cultural" id="abono-bono-cultural" min="0" value="0" data-price="90" style="display: none;" />
             <button type="submit" class="ticket-buy">COMPRAR</button>
         </form>
     </div>
@@ -86,19 +90,22 @@
 <!-- Tickets de día list -->
 <div id="dia" class="tickets-panel">
     <div>
-        <form class="ticket-line">
+        <form class="ticket-line" data-ticket-type="dia-1" data-price="40">
             <span class="ticket-name">Día 1 - 3.10.25</span>
             <span class="ticket-price">40€</span>
+            <input type="number" name="dia-1" id="dia-1" min="0" value="0" data-price="40" style="display: none;" />
             <button type="submit" class="ticket-buy">COMPRAR</button>
         </form>
-        <form class="ticket-line">
+        <form class="ticket-line" data-ticket-type="dia-2" data-price="40">
             <span class="ticket-name">Día 2 - 4.10.25</span>
             <span class="ticket-price">40€</span>
+            <input type="number" name="dia-2" id="dia-2" min="0" value="0" data-price="40" style="display: none;" />
             <button type="submit" class="ticket-buy">COMPRAR</button>
         </form>
-        <form class="ticket-line">
+        <form class="ticket-line" data-ticket-type="dia-3" data-price="40">
             <span class="ticket-name">Día 3 - 5.10.25</span>
             <span class="ticket-price">40€</span>
+            <input type="number" name="dia-3" id="dia-3" min="0" value="0" data-price="40" style="display: none;" />
             <button type="submit" class="ticket-buy">COMPRAR</button>
         </form>
     </div>
@@ -106,6 +113,29 @@
       </section>
     </main>
   </div>
+
+  <!-- CART SECTION -->
+  <section id="cart-section" class="cart-section" style="display: none;">
+    <div class="cart-container">
+      <h2 class="cart-title">TU COMPRA</h2>
+      <div class="cart-item">
+        <div class="cart-item-info">
+          <span class="cart-item-name" id="cart-item-name"></span>
+          <span class="cart-item-price" id="cart-item-price"></span>
+        </div>
+        <div class="cart-quantity-controls">
+          <button class="cart-quantity-btn" id="cart-decrease">-</button>
+          <input type="number" id="cart-quantity" name="quantity" min="1" value="1" readonly>
+          <button class="cart-quantity-btn" id="cart-increase">+</button>
+        </div>
+        <div class="cart-total">
+          <span>TOTAL: </span>
+          <span id="cart-total-price">0€</span>
+        </div>
+      </div>
+      <button class="cart-continue-btn" id="cart-continue">CONTINUAR</button>
+    </div>
+  </section>
 
   <!-- TICKETS FORM SECTION -->
   <section class="tickets-form-section">
@@ -123,7 +153,7 @@
       <div class="payment-option" id="payment-credito">
         <button class="payment-toggle" data-target="#payment-credito-panel">
           <span class="payment-icon">+</span>
-          <span class="payment-label">Crédito</span>
+          <span class="payment-label">CRÉDITO</span>
         </button>
         <div class="payment-logos">
           <img src="logos/Payment Method/Mastercard.svg" alt="Mastercard" class="payment-logo-img" />
@@ -145,7 +175,7 @@
       <div class="payment-option" id="payment-paypal">
         <button class="payment-toggle" data-target="#payment-paypal-panel">
           <span class="payment-icon">+</span>
-          <span class="payment-label">PayPal</span>
+          <span class="payment-label">PAYPAL</span>
         </button>
         <div class="payment-logos">
           <img src="logos/Payment Method/PayPal.svg" alt="PayPal" class="payment-logo-img" />
@@ -160,7 +190,7 @@
       <div class="payment-option" id="payment-google">
         <button class="payment-toggle" data-target="#payment-google-panel">
           <span class="payment-icon">+</span>
-          <span class="payment-label">Google Pay</span>
+          <span class="payment-label">GOOGLE PAY</span>
         </button>
         <div class="payment-logos">
           <img src="logos/Payment Method/GooglePay.svg" alt="Google Pay" class="payment-logo-img" />
