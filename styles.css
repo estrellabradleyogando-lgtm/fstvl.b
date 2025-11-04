@@ -579,48 +579,45 @@ body.menu-open {
     position: relative;
     max-width: 1200px;
     margin: 80px auto;
-    padding: 40px 24px 120px 24px;
+    padding: 100px 24px 120px 24px;
     color: var(--negro);
     background: var(--blanco);
 }
 
+/* CARTEL LOGO */
 .cartel-logo {
     position: absolute;
-    top: 24px;
-    right: 24px;
-    margin-bottom: 48px;
-}
-
-.cartel-section .cartel-logo {
-    display: block;
-    margin-bottom: 24px !important; 
+    top: clamp(16px, 3vw, 24px);
+    /* responsive spacing from top */
+    right: clamp(16px, 3vw, 24px);
+    /* responsive spacing from right */
+    text-align: right;
 }
 
 .cartel-logo .logo-img {
-    height: 56px;
+    height: clamp(36px, 6vw, 56px);
     width: auto;
     filter: none;
+    transition: height 0.3s ease;
 }
 
-@media (min-width: 900px) {
-    .cartel-section {
-        display: flex;
-        align-items: flex-start;
-        flex-wrap: nowrap;
-    }
-
-    .cartel-section .cartel-logo {
-        margin-bottom: 0 !important;
-        margin-right: 40px !important; 
-        flex: 0 0 auto;
-    }
-
-    .cartel-section .cartel-divider {
-        flex: 1 1 auto;
-        min-width: 0;
-    }
+/* CARTEL LUGAR HORA */
+.cartel-lugar-hora {
+    position: absolute;
+    right: 24px;
+    bottom: 24px;
+    text-align: right;
+    font-family: var(--fuente-texto);
+    font-size: clamp(12px, 1.4vw, 16px);
+    line-height: 1.6;
 }
 
+/* Main content stays centered */
+.cartel-divider {
+    max-width: 800px;
+}
+
+/* A-Z label */
 .a-z {
     display: inline-block;
     background: var(--negro);
@@ -634,6 +631,7 @@ body.menu-open {
     margin: 12px 0 24px 0;
 }
 
+/* Artists list */
 .cartel-artistas p {
     font-family: var(--fuente-titulos);
     font-weight: 800;
@@ -647,25 +645,37 @@ body.menu-open {
     margin: 0 10px;
 }
 
-.cartel-lugar-hora {
-    position: absolute;
-    right: 24px;
-    bottom: 24px;
-    text-align: right;
-    font-family: var(--fuente-texto);
-    font-size: clamp(12px, 1.4vw, 16px);
-    line-height: 1.6;
+/* RESPONSIVE ADJUSTMENTS */
+@media (min-width: 900px) {
+    .cartel-section {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: nowrap;
+    }
+
+    .cartel-logo {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+    }
+
+    .cartel-section .cartel-divider {
+        flex: 1 1 auto;
+        min-width: 0;
+    }
 }
 
 @media (max-width: 800px) {
     .cartel-logo .logo-img {
-        height: 44px;
+        height: clamp(28px, 8vw, 44px);
     }
 
     .cartel-section {
+        padding-top: 80px;
         padding-bottom: 100px;
     }
 }
+
 
 /* LINEUP COMPLETO BUTTON */
 .lineup-button-container {
@@ -692,10 +702,10 @@ body.menu-open {
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
-    padding: 8px 16px;             
+    padding: 8px 16px;
     margin: 0 auto;
     display: inline-block;
-    white-space: nowrap;                
+    white-space: nowrap;
     box-sizing: border-box;
     border: 2px solid transparent;
     max-width: 95%;
@@ -1174,7 +1184,7 @@ body.menu-open {
         justify-self: end;
     }
 
-       .ticket-buy {
+    .ticket-buy {
         width: 100%;
         font-size: clamp(12px, 4.5vw, 16px);
         padding: 10px 16px;
@@ -1573,7 +1583,7 @@ body.menu-open {
     background-color: var(--blanco);
     color: var(--negro);
     max-width: 600px;
-     width: min(720px, 96%);
+    width: min(720px, 96%);
     max-width: 96%;
     padding: 36px;
     box-sizing: border-box;
@@ -1638,7 +1648,8 @@ body.menu-open {
     background-color: var(--blanco);
     box-sizing: border-box;
     border: 2px solid var(--negro);
-    min-width: 0;            /* allow flex children to shrink */
+    min-width: 0;
+    /* allow flex children to shrink */
     gap: 12px;
 }
 
@@ -1665,7 +1676,7 @@ body.menu-open {
 }
 
 .cookie-toggle {
-     flex: 0 0 auto;
+    flex: 0 0 auto;
     margin-left: 12px;
 }
 
@@ -1703,11 +1714,11 @@ body.menu-open {
 
 /* Disabled checkbox: grey track, black knob */
 .cookie-toggle input[type="checkbox"]:disabled {
-    background-color: #d9d9d9; 
+    background-color: #d9d9d9;
     border-color: #d9d9d9;
     pointer-events: none;
-    opacity: 1;                
-    filter: none ;           
+    opacity: 1;
+    filter: none;
 }
 
 .cookie-toggle input[type="checkbox"]:disabled::before {
@@ -1720,7 +1731,7 @@ body.menu-open {
 }
 
 .cookie-modal-buttons {
-   display: flex;
+    display: flex;
     gap: 12px;
     align-items: center;
     justify-content: flex-end;
