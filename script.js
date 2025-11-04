@@ -442,7 +442,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (cookieSavePreferences) {
         cookieSavePreferences.addEventListener('click', function () {
             const preferences = {
-                essential: true, // Always true
+                essential: true, 
                 analytics: cookieAnalytics ? cookieAnalytics.checked : false,
                 marketing: cookieMarketing ? cookieMarketing.checked : false
             };
@@ -453,7 +453,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function showCookieModal() {
         if (cookieModal) {
-            // Prevent body scroll when modal is open
             document.body.style.overflow = 'hidden';
             cookieModal.classList.add('active');
         }
@@ -468,7 +467,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function savePreferences(preferences) {
-        // Save preferences as JSON in a cookie (expires in 365 days)
         const expiryDate = new Date();
         expiryDate.setDate(expiryDate.getDate() + 365);
         document.cookie = `cookie-consent=${JSON.stringify(preferences)}; expires=${expiryDate.toUTCString()}; path=/; SameSite=Lax`;
@@ -487,8 +485,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function applyPreferences(preferences) {
-        // Here you would enable/disable actual tracking scripts
-        // For example:
         
         if (preferences.analytics) {
             // Enable Google Analytics or other analytics
