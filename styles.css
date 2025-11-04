@@ -744,7 +744,6 @@ body.menu-open {
 
 .patrocinadores-track {
     background-color: var(--negro);
-    color: var(--blanco);
     display: flex;
     align-items: center;
     gap: 40px;
@@ -756,7 +755,6 @@ body.menu-open {
 .patrocinadores-track img {
     height: 36px;
     width: auto;
-    filter: brightness(0) invert(1);
 }
 
 @keyframes sponsors-scroll {
