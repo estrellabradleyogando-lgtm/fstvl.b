@@ -13,6 +13,66 @@
 </head>
 
 <body>
+    <!-- COOKIE MODAL -->
+<div id="cookie-modal" class="cookie-modal">
+    <div class="cookie-modal-content">
+        <button class="cookie-modal-close" id="cookie-modal-close" aria-label="Cerrar modal">×</button>
+        
+        <h2 class="cookie-modal-title">CONFIGURACIÓN DE COOKIES</h2>
+        
+        <p class="cookie-modal-text">
+            UTILIZAMOS COOKIES PARA MEJORAR TU EXPERIENCIA EN NUESTRO SITIO WEB. ALGUNAS SON ESENCIALES PARA EL FUNCIONAMIENTO DEL SITIO, MIENTRAS QUE OTRAS NOS AYUDAN A ENTENDER CÓMO INTERACTÚAS CON NOSOTROS.
+        </p>
+
+        <div class="cookie-options">
+            <div class="cookie-option">
+                <div class="cookie-option-info">
+                    <div class="cookie-option-title">COOKIES ESENCIALES</div>
+                    <div class="cookie-option-description">
+                        Necesarias para el funcionamiento básico del sitio web. No se pueden desactivar.
+                    </div>
+                </div>
+                <div class="cookie-toggle">
+                    <input type="checkbox" id="cookie-essential" checked disabled>
+                </div>
+            </div>
+
+            <div class="cookie-option">
+                <div class="cookie-option-info">
+                    <div class="cookie-option-title">COOKIES ANALÍTICAS</div>
+                    <div class="cookie-option-description">
+                        Nos ayudan a entender cómo los visitantes interactúan con el sitio web.
+                    </div>
+                </div>
+                <div class="cookie-toggle">
+                    <input type="checkbox" id="cookie-analytics">
+                </div>
+            </div>
+
+            <div class="cookie-option">
+                <div class="cookie-option-info">
+                    <div class="cookie-option-title">COOKIES DE MARKETING</div>
+                    <div class="cookie-option-description">
+                        Utilizadas para mostrar anuncios relevantes y medir la efectividad de campañas.
+                    </div>
+                </div>
+                <div class="cookie-toggle">
+                    <input type="checkbox" id="cookie-marketing">
+                </div>
+            </div>
+        </div>
+
+        <div class="cookie-modal-buttons">
+            <button class="cookie-btn cookie-btn-accept-all" id="cookie-accept-all">
+                ACEPTAR TODO
+            </button>
+            <button class="cookie-btn cookie-btn-save" id="cookie-save-preferences">
+                GUARDAR PREFERENCIAS
+            </button>
+        </div>
+    </div>
+</div>
+
     <!-- MENU NAVEGACION -->
     <header class="navbar">
         <div class="nav-container">

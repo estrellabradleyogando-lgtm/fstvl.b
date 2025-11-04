@@ -381,3 +381,138 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 });
+
+// COOKIE MODAL FUNCTIONALITY
+document.addEventListener('DOMContentLoaded', function () {
+    const cookieModal = document.getElementById('cookie-modal');
+    const cookieModalClose = document.getElementById('cookie-modal-close');
+    const cookieAcceptAll = document.getElementById('cookie-accept-all');
+    const cookieSavePreferences = document.getElementById('cookie-save-preferences');
+    const cookieAnalytics = document.getElementById('cookie-analytics');
+    const cookieMarketing = document.getElementById('cookie-marketing');
+
+    // Check if user has already made a choice
+    const cookieConsent = getCookie('cookie-consent');
+
+    if (!cookieConsent) {
+        // Show modal if no consent found
+        showCookieModal();
+    } else {
+        // Apply saved preferences
+        applySavedPreferences(cookieConsent);
+    }
+
+    // Close modal when X is clicked
+    if (cookieModalClose) {
+        cookieModalClose.addEventListener('click', function () {
+            hideCookieModal();
+        });
+    }
+
+    // Close modal when clicking outside the content
+    if (cookieModal) {
+        cookieModal.addEventListener('click', function (e) {
+            if (e.target === cookieModal) {
+                hideCookieModal();
+            }
+        });
+    }
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && cookieModal && cookieModal.classList.contains('active')) {
+            hideCookieModal();
+        }
+    });
+
+    // Accept all cookies
+    if (cookieAcceptAll) {
+        cookieAcceptAll.addEventListener('click', function () {
+            const preferences = {
+                essential: true,
+                analytics: true,
+                marketing: true
+            };
+            savePreferences(preferences);
+            hideCookieModal();
+        });
+    }
+
+    // Save custom preferences
+    if (cookieSavePreferences) {
+        cookieSavePreferences.addEventListener('click', function () {
+            const preferences = {
+                essential: true, // Always true
+                analytics: cookieAnalytics ? cookieAnalytics.checked : false,
+                marketing: cookieMarketing ? cookieMarketing.checked : false
+            };
+            savePreferences(preferences);
+            hideCookieModal();
+        });
+    }
+
+    function showCookieModal() {
+        if (cookieModal) {
+            // Prevent body scroll when modal is open
+            document.body.style.overflow = 'hidden';
+            cookieModal.classList.add('active');
+        }
+    }
+
+    function hideCookieModal() {
+        if (cookieModal) {
+            // Restore body scroll
+            document.body.style.overflow = '';
+            cookieModal.classList.remove('active');
+        }
+    }
+
+    function savePreferences(preferences) {
+        // Save preferences as JSON in a cookie (expires in 365 days)
+        const expiryDate = new Date();
+        expiryDate.setDate(expiryDate.getDate() + 365);
+        document.cookie = `cookie-consent=${JSON.stringify(preferences)}; expires=${expiryDate.toUTCString()}; path=/; SameSite=Lax`;
+
+        // Apply the preferences
+        applyPreferences(preferences);
+    }
+
+    function applySavedPreferences(consentString) {
+        try {
+            const preferences = JSON.parse(consentString);
+            applyPreferences(preferences);
+        } catch (e) {
+            console.error('Error parsing cookie preferences:', e);
+        }
+    }
+
+    function applyPreferences(preferences) {
+        // Here you would enable/disable actual tracking scripts
+        // For example:
+        
+        if (preferences.analytics) {
+            // Enable Google Analytics or other analytics
+            console.log('Analytics cookies enabled');
+            // Example: loadGoogleAnalytics();
+        } else {
+            console.log('Analytics cookies disabled');
+        }
+
+        if (preferences.marketing) {
+            // Enable marketing/advertising cookies
+            console.log('Marketing cookies enabled');
+            // Example: loadMarketingScripts();
+        } else {
+            console.log('Marketing cookies disabled');
+        }
+    }
+
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) {
+            return parts.pop().split(';').shift();
+        }
+        return null;
+    }
+});
