@@ -268,7 +268,7 @@ body.menu-open {
 
 @media (max-width: 768px) {
 
-    /* Mobile overlay menu */
+    /* Mobile overlay menu: one-third width, slide from right */
     .nav-menu {
         position: fixed;
         top: 0;
@@ -276,13 +276,17 @@ body.menu-open {
         bottom: 0;
         left: auto;
         width: 33.3333vw;
+        /* a third of the viewport width */
         min-width: 240px;
+        /* keep it usable on very small screens */
         max-width: 480px;
+        /* optional hard cap */
         height: 100vh;
         background-color: var(--negro);
         display: flex;
         flex-direction: column;
         align-items: flex-end;
+        /* align options to the right */
         padding: 80px 24px 24px;
         gap: 18px;
         box-shadow: -10px 0 20px rgba(0, 0, 0, 0.35);
@@ -298,14 +302,15 @@ body.menu-open {
 
     .nav-menu .nav-link,
     .nav-menu .nav-button {
-        width: 100%;
-        padding: 14px 6px;
-        text-align: right;
+        width: auto;
+        padding: 14px 20px;
+        text-align: center;
         border-bottom: 1px solid rgba(255, 255, 255, 0.12);
         border-radius: 0;
         box-sizing: border-box;
     }
 
+    /* Keep button visual consistent in overlay */
     .nav-menu .nav-button {
         background: var(--blanco);
         color: var(--negro);
